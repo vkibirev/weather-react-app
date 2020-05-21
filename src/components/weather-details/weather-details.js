@@ -14,7 +14,7 @@ const WeatherDetails = ({ cityName, fetchCity, city }) => {
     fetchCity(cityName)
   }, [])
 
-  if (!city) return null
+  if (!city) return <Segment>Something went wrong, please try again</Segment>
   return (
     <Segment>
       <Item.Group>
