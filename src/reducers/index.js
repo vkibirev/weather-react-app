@@ -119,11 +119,16 @@ const reducer = (state = initialState, action) => {
     case DELETE_CITY: {
       const city = action.payload
       const itemIndex = state.cities.findIndex((c) => city.id === c.id)
+      const itemIndexSaved = state.savedCities.findIndex((id) => id === city.id)
+      const updatedSavedCities = [
+        ...state.savedCities.slice(0, itemIndexSaved),
+        ...state.savedCities.slice(itemIndexSaved + 1),
+      ]
       const updatedCities = [...state.cities.slice(0, itemIndex), ...state.cities.slice(itemIndex + 1)]
       return {
         ...state,
         cities: [...updatedCities],
-        savedCities: [...updatedCities],
+        savedCities: [...updatedSavedCities],
       }
     }
 
