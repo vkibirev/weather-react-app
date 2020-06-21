@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Item, Segment, Button } from 'semantic-ui-react'
+import { Item, Segment, Button, Loader, Dimmer } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { compose } from '../../utils'
 import { withWeatherService } from '../hoc'
@@ -9,12 +9,21 @@ import { fetchCity } from '../../actions'
 import _ from 'lodash'
 import moment from 'moment'
 
-const WeatherDetails = ({ cityName, fetchCity, city }) => {
+const WeatherDetails = ({ cityName, fetchCity, city, loading }) => {
   useEffect(() => {
     fetchCity(cityName)
   }, [])
 
-  if (!city) return <Segment>Something went wrong, please try again</Segment>
+  if (loading) {
+    return (
+      <Dimmer active={loading} inverted>
+        <Loader />
+      </Dimmer>
+    )
+  }
+
+  if (!city && !loading) return <Segment>Something went wrong, please try again</Segment>
+
   return (
     <Segment>
       <Item.Group>

@@ -25,13 +25,6 @@ const CityCard = ({ city, updating, updateCityData, deleteCity, error }) => {
     deleteCity(city)
   }
 
-  if (error) {
-    return (
-      <Card>
-        <Card.Content>{`Can't load data for this city`}</Card.Content>
-      </Card>
-    )
-  }
   return (
     <Card>
       <Dimmer active={itemUpdating} inverted>

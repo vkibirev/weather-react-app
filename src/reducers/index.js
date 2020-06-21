@@ -42,6 +42,8 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           cities,
+          loading: false,
+          error: null,
         }
       } else {
         return {
@@ -105,6 +107,7 @@ const reducer = (state = initialState, action) => {
         cities: [...updatedCities],
         loading: false,
         error: null,
+        updating: false,
       }
     }
 
@@ -112,6 +115,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         updating: false,
+        loading: false,
         error: action.payload,
       }
     }
