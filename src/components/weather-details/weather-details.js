@@ -12,7 +12,7 @@ import moment from 'moment'
 const WeatherDetails = ({ cityName, fetchCity, city, loading }) => {
   useEffect(() => {
     fetchCity(cityName)
-  }, [])
+  }, [fetchCity, cityName])
 
   if (loading) {
     return (

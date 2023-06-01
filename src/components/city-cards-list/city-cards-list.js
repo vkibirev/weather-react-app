@@ -12,7 +12,7 @@ const CityCardList = ({ cities, savedCities, fetchCitiesList, loading }) => {
     if (savedCities.length) {
       fetchCitiesList(savedCities)
     }
-  }, [])
+  }, [savedCities, fetchCitiesList])
 
   const checkCities = !cities.length ? (
     <Card>
